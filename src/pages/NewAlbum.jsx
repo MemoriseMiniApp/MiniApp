@@ -29,7 +29,7 @@ const NewAlbum = () => {
   };
 
   return (
-    <form className="space-y-4 max-w-md mx-auto mt-8" onSubmit={handleSubmit}>
+    <form className="space-y-4 max-w-md mx-auto mt-8 p-4" onSubmit={handleSubmit}>
       <h2 className="text-xl font-bold mb-4">Создать новый альбом</h2>
       <div>
         <Label htmlFor="title">Название альбома</Label>
