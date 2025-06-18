@@ -4,15 +4,19 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useLogin } from "../services/AuthContext";
+import { createAlbum } from "../services/album_service"; // импортируем функцию
 
 const NewAlbum = () => {
-  const { login, setJwt } = useLogin();
+  const { jwt } = useLogin(); // предполагается, что jwt доступен через useLogin
   const [form, setForm] = useState({
     title: "",
     start_date: "",
     end_date: "",
     description: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,15 +26,32 @@ const NewAlbum = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // handle form submission here
-    console.log(form);
+    setLoading(true);
+    setError("");
+    setSuccess(false);
+    try {
+      await createAlbum(form, jwt);
+      setSuccess(true);
+      setForm({
+        title: "",
+        start_date: "",
+        end_date: "",
+        description: "",
+      });
+    } catch (err) {
+      setError("Ошибка при создании альбома");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <form className="space-y-4 max-w-md mx-auto mt-8 p-4" onSubmit={handleSubmit}>
       <h2 className="text-xl font-bold mb-4">Создать новый альбом</h2>
+      {error && <div className="text-red-500">{error}</div>}
+      {success && <div className="text-green-600">Альбом успешно создан!</div>}
       <div>
         <Label className="mb-2" htmlFor="title">Название альбома</Label>
         <Input
@@ -73,7 +94,9 @@ const NewAlbum = () => {
           placeholder="Описание альбома"
         />
       </div>
-      <Button type="submit">Создать</Button>
+      <Button type="submit" disabled={loading}>
+        {loading ? "Создание..." : "Создать"}
+      </Button>
     </form>
   );
 };
