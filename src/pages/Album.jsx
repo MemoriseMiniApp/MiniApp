@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getFilesByUserId } from "../services/file_service";
-import { useLogin } from "../services/AuthContext"; // Добавьте этот импорт
+import { useLogin } from "../services/AuthContext";
+import NewAlbumButton from "@/components/NewAlbumBtn";
+
 
 const Album = () => {
   const [files, setFiles] = useState([]);
@@ -18,8 +20,7 @@ const Album = () => {
   return (
     <div className="album-container">
       <p> jwt: {login.jwt} </p>
-      <h1 className="text-2xl font-bold">Album</h1>
-      <p>Here you can display your album content, such as images and titles.</p>
+      <NewAlbumButton />
       <div className="grid grid-cols-2 gap-4 mt-4">
         {files.map((url, idx) => (
           <img
