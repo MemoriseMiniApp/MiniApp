@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getFilesByUserId } from "../services/file_service";
-
-const userId = "1051176747"; // замените на актуальный userId
+import { useLogin } from "../services/AuthContext"; // Добавьте этот импорт
 
 const Album = () => {
   const [files, setFiles] = useState([]);
@@ -9,11 +8,12 @@ const Album = () => {
 
   useEffect(() => {
     async function fetchFiles() {
-      const fetchedFiles = await getFilesByUserId(userId);
+      if (!login.user_id) return; // Ждём, пока user_id появится
+      const fetchedFiles = await getFilesByUserId(login.user_id);
       setFiles(fetchedFiles);
     }
     fetchFiles();
-  }, []);
+  }, [login.user_id]);
 
   return (
     <div className="album-container">
