@@ -4,10 +4,12 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useLogin } from "../services/AuthContext";
-import { createAlbum } from "../services/album_service"; // импортируем функцию
+import { createAlbum } from "../services/album_service";
+import { useNavigate } from "react-router-dom"; // добавьте импорт
 
 const NewAlbum = () => {
-  const { login } = useLogin(); // предполагается, что jwt доступен через useLogin
+  const { login } = useLogin();
+  const navigate = useNavigate(); // инициализируйте хук
   const [form, setForm] = useState({
     title: "",
     start_date: "",
@@ -32,7 +34,7 @@ const NewAlbum = () => {
     setError("");
     setSuccess(false);
     try {
-      await createAlbum(form, login.jwt); 
+      await createAlbum(form, login.jwt);
       setSuccess(true);
       setForm({
         title: "",
@@ -40,6 +42,7 @@ const NewAlbum = () => {
         end_date: "",
         description: "",
       });
+      navigate("/albums"); // перенаправление после успешного создания
     } catch (err) {
       setError("Ошибка при создании альбома");
     } finally {

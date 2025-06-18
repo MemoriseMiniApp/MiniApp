@@ -14,8 +14,6 @@ const AlbumCard = ({ album }) => (
     <p><b>Описание:</b> {album.description || "—"}</p>
     <p><b>Дата начала:</b> {album.start_date}</p>
     <p><b>Дата окончания:</b> {album.end_date}</p>
-    <p><b>Пользователи:</b> {album.users && album.users.length > 0 ? album.users.join(", ") : "—"}</p>
-    <p><b>ID:</b> {album.id}</p>
   </div>
 );
 
