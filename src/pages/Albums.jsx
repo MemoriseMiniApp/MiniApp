@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import NewAlbum from "../pages/NewAlbum";
 import AlbumCard from "../components/AlbumCard";
 import { useLogin } from "../services/AuthContext";
 import { get_my_albums } from "../services/album_service";
+import NewAlbumBtn from "@/components/NewAlbumBtn";
 
 const Albums = () => {
   const { login } = useLogin();
@@ -21,7 +21,6 @@ const Albums = () => {
 
   return (
     <>
-      <NewAlbum />
       <div style={{ display: "flex", flexWrap: "wrap", marginTop: 24 }}>
         {loading ? (
           <p>Загрузка...</p>
@@ -31,6 +30,8 @@ const Albums = () => {
           ))
         )}
       </div>
+      <NewAlbumBtn />
+
     </>
   );
 };
