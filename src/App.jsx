@@ -4,13 +4,14 @@ import Navbar from "./components/Navbar";
 import Album from "./pages/Album";
 import FileInput from "./pages/FileInput";
 import NewAlbum from "./pages/NewAlbum";
+import Albums from "@/pages/Albums";
 
 const App = () => {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/album" element={<Album />} />
+        <Route path="/albums" element={<Albums />} />
         <Route path="/file-input" element={<FileInput />} />
         <Route path="/new-album" element={<NewAlbum />} />
 
