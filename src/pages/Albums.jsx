@@ -3,7 +3,7 @@ import AlbumCard from "../components/AlbumCard";
 import { useLogin } from "../services/AuthContext";
 import { get_my_albums } from "../services/album_service";
 import NewAlbumBtn from "@/components/NewAlbumBtn";
-
+import ShareContact from "@/components/ShareContact"; 
 const Albums = () => {
   const { login } = useLogin();
   const jwt = login.jwt;
@@ -31,6 +31,7 @@ const Albums = () => {
         )}
       </div>
       <NewAlbumBtn />
+    <ShareContact />
 
     </>
   );
