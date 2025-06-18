@@ -19,6 +19,16 @@ const Albums = () => {
     }
   }, [jwt]);
 
+  const handleShareClick = () => {
+    if (window.Telegram && window.Telegram.WebApp) {
+      window.Telegram.WebApp.openTelegramLink(
+        "https://t.me/share/url?url=https://t.me/memorise_photo_bot?start=share_abc123"
+      );
+    } else {
+      alert("Telegram WebApp не найден.");
+    }
+  };
+
   return (
     <>
       <div style={{ display: "flex", flexWrap: "wrap", marginTop: 24 }}>
@@ -31,10 +41,22 @@ const Albums = () => {
         )}
       </div>
       <NewAlbumBtn />
-    <a href="https://t.me/memorise_photo_bot?start=italbum" className="mt-4 inline-block">
-      Поделиться альбомом
-    </a>
-  </>
+      <button
+        style={{
+          marginTop: 16,
+          padding: "10px 20px",
+          background: "#229ED9",
+          color: "#fff",
+          border: "none",
+          borderRadius: 8,
+          cursor: "pointer",
+          fontSize: 16,
+        }}
+        onClick={handleShareClick}
+      >
+        Поделиться в Telegram
+      </button>
+    </>
   );
 };
 
