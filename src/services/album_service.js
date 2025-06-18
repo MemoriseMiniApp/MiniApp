@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://213.176.65.159.nip.io:8001/memorise';
+const API_BASE_URL = 'http://213.176.65.159.nip.io';
 
 export async function createAlbum(album, jwt) {
   try {
