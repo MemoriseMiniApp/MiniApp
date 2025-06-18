@@ -26,7 +26,7 @@ export const LoginProvider = ({ children }) => {
             }
 
             try {
-                const response = await fetch('http://<YOUR_BACKEND_HOST>/auth/telegram', {
+                const response = await fetch('https://213.176.65.159.nip.io/auth/telegram', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
