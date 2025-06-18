@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center px-4 py-2">
           <span className="text-lg font-bold tracking-tight">Memorise</span>
           <div className="flex space-x-4">
-            <Link to="/album" className="text-gray-700 hover:text-blue-500">
+            <Link to="/albums" className="text-gray-700 hover:text-blue-500">
               Album
             </Link>
             <Link to="/file-input" className="text-gray-700 hover:text-blue-500">
