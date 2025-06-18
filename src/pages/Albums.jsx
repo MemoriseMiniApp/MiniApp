@@ -31,9 +31,10 @@ const Albums = () => {
         )}
       </div>
       <NewAlbumBtn />
-    <ShareContact />
-
-    </>
+    <a href="https://t.me/memorise_photo_bot?start=italbum" className="mt-4 inline-block">
+      Поделиться альбомом
+    </a>
+  </>
   );
 };
 
