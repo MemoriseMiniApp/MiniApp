@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import NewAlbum from "../components/NewAlbum";
+import NewAlbum from "../pages/NewAlbum";
 import AlbumCard from "../components/AlbumCard";
 import { useLogin } from "../services/AuthContext";
 import { get_my_albums } from "../services/album_service";

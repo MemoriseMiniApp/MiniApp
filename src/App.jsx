@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Album from "./pages/Album";
 import FileInput from "./pages/FileInput";
 import NewAlbum from "./pages/NewAlbum";
 import Albums from "@/pages/Albums";
