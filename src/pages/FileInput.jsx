@@ -27,7 +27,7 @@ const FileInput = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen m-4">
       <h1 className="text-2xl font-bold mb-4">Upload Files</h1>
       <input
         type="file"
