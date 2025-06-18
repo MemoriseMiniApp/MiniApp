@@ -7,7 +7,7 @@ import { useLogin } from "../services/AuthContext";
 import { createAlbum } from "../services/album_service"; // импортируем функцию
 
 const NewAlbum = () => {
-  const { jwt } = useLogin(); // предполагается, что jwt доступен через useLogin
+  const { login } = useLogin(); // предполагается, что jwt доступен через useLogin
   const [form, setForm] = useState({
     title: "",
     start_date: "",
@@ -32,7 +32,7 @@ const NewAlbum = () => {
     setError("");
     setSuccess(false);
     try {
-      await createAlbum(form, jwt);
+      await createAlbum(form, login.jwt); 
       setSuccess(true);
       setForm({
         title: "",
