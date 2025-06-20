@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link
 import AlbumCard from "../components/AlbumCard";
 import { useLogin } from "../services/AuthContext";
 import { get_my_albums } from "../services/album_service";
 import NewAlbumBtn from "@/components/NewAlbumBtn";
-import ShareContact from "@/components/ShareContact"; 
+import ShareContact from "@/components/ShareContact";
+
 const Albums = () => {
   const { login } = useLogin();
   const jwt = login.jwt;
@@ -36,7 +38,9 @@ const Albums = () => {
           <p>Загрузка...</p>
         ) : (
           albums.map((album) => (
-            <AlbumCard key={album.id} album={album} />
+            <Link key={album.id} to={`/album/${album.id}`} style={{ textDecoration: 'none' }}>
+              <AlbumCard album={album} />
+            </Link>
           ))
         )}
       </div>
