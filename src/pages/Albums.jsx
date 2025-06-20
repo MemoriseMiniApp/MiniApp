@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 import AlbumCard from "../components/AlbumCard";
 import { useLogin } from "../services/AuthContext";
 import { get_my_albums } from "../services/album_service";
@@ -33,16 +33,28 @@ const Albums = () => {
 
   return (
     <>
-      <div style={{ display: "flex", flexWrap: "wrap", marginTop: 24 }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr", // Two equal columns
+          gap: "16px", // Space between cards
+          padding: "24px", // Container padding
+          width: "100%", // Full width
+          boxSizing: "border-box", // Include padding in width
+        }}
+      >
         {loading ? (
-          <p>Загрузка...</p>
+          <p style={{ gridColumn: "1 / -1", textAlign: "center" }}>Загрузка...</p> // Span both columns
         ) : (
           albums.map((album) => (
-            <Link key={album.id} to={`/album/${album.id}`} style={{ 
-              textDecoration: 'none',
-              width: "calc(50% - 24px)",
-              boxSizing: "border-box"
-              }}>
+            <Link
+              key={album.id}
+              to={`/album/${album.id}`}
+              style={{
+                textDecoration: "none",
+                display: "block", // Ensure Link fills grid cell
+              }}
+            >
               <AlbumCard album={album} />
             </Link>
           ))
@@ -59,6 +71,8 @@ const Albums = () => {
           borderRadius: 8,
           cursor: "pointer",
           fontSize: 16,
+          marginLeft: 24,
+          marginBottom: 24,
         }}
         onClick={handleShareClick}
       >
