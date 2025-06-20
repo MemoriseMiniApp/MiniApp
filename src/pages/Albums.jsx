@@ -38,7 +38,11 @@ const Albums = () => {
           <p>Загрузка...</p>
         ) : (
           albums.map((album) => (
-            <Link key={album.id} to={`/album/${album.id}`} style={{ textDecoration: 'none' }}>
+            <Link key={album.id} to={`/album/${album.id}`} style={{ 
+              textDecoration: 'none',
+              width: "calc(50% - 24px)",
+              boxSizing: "border-box"
+              }}>
               <AlbumCard album={album} />
             </Link>
           ))
