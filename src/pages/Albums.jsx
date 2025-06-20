@@ -35,16 +35,16 @@ const Albums = () => {
     <>
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr", // Two equal columns
-          gap: "16px", // Space between cards
-          padding: "24px", // Container padding
-          width: "100%", // Full width
-          boxSizing: "border-box", // Include padding in width
+          display: "flex",
+          flexWrap: "wrap", // Позволяет перенос на следующую строку
+          gap: "16px", // Расстояние между карточками
+          padding: "24px", // Отступы контейнера
+          width: "100%", // Полная ширина
+          boxSizing: "border-box", // Учитываем отступы в ширине
         }}
       >
         {loading ? (
-          <p style={{ gridColumn: "1 / -1", textAlign: "center" }}>Загрузка...</p>
+          <p style={{ width: "100%", textAlign: "center" }}>Загрузка...</p>
         ) : (
           albums.map((album) => (
             <Link
@@ -52,7 +52,8 @@ const Albums = () => {
               to={`/album/${album.id}`}
               style={{
                 textDecoration: "none",
-                display: "block", // Ensure Link fills grid cell
+                flex: "1 1 calc(50% - 8px)", // Две колонки с учетом gap
+                minWidth: 0, // Предотвращает переполнение
               }}
             >
               <AlbumCard album={album} />

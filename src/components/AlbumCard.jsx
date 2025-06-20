@@ -1,15 +1,16 @@
 import React from "react";
 
 const AlbumCard = ({ album }) => (
-  <div style={{
-    border: "1px solid #ccc",
-    borderRadius: "8px",
-    padding: "16px",
-    margin: "8px",
-    width: "calc(50% - 24px)",
-    boxSizing: "border-box",
-    background: "#fafafa"
-  }}>
+  <div
+    style={{
+      border: "1px solid #ccc",
+      borderRadius: "8px",
+      padding: "16px",
+      width: "100%", // Занимает всю ширину родителя (Link)
+      boxSizing: "border-box",
+      background: "#fafafa",
+    }}
+  >
     <h3>{album.title}</h3>
     <p><b>Описание:</b> {album.description || "—"}</p>
     <p><b>Дата начала:</b> {album.start_date}</p>
