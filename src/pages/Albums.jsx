@@ -44,7 +44,7 @@ const Albums = () => {
         }}
       >
         {loading ? (
-          <p style={{ gridColumn: "1 / -1", textAlign: "center" }}>Загрузка...</p> // Span both columns
+          <p style={{ gridColumn: "1 / -1", textAlign: "center" }}>Загрузка...</p>
         ) : (
           albums.map((album) => (
             <Link
